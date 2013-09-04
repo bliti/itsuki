@@ -1,7 +1,24 @@
 {% extends "layout.html" %}
 
 {% block title %}{{title}}{% endblock %}
+{% block css %}<link rel="stylesheet" href="static/css/{{css}}.css">{% endblock %}
 
 {% block body %}
-<p>Index page. Users log in right here.</p>
+<div class="header">
+
+	<div class="container">
+		<ul class="list-inline">
+			<li><p class="brand">Auto Follow</p></li>
+			<li><p>Work less. Sell more.</p></li>
+			
+		</ul>
+	</div>
+</div>
+
+<div class="container">
+	<div class="login">
+		<h1>Login form goes here</h1>
+		<p>Going to sleep. (:</p>
+	</div>
+</div>
 {% endblock %}

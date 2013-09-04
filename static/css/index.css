@@ -1,0 +1,24 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:100);
+
+
+body {
+	background: url(../img/ny.jpg) no-repeat center center fixed;
+	font-family: 'Lato', sans-serif; 
+}
+
+h1 {font-family: inherit;}
+
+.header {
+	width: 100%;
+	height: 50px;
+	background: rgba(0, 0, 0, 0.8);
+	padding-top: 5px;
+	color: #f9801a;
+}
+
+.header .brand {font-size: 1.8em;}
+
+
+/* login area */
+
+.login {padding-top: 200px; color: yellow;}
