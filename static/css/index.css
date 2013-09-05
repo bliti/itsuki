@@ -1,5 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Lato:100);
-
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans);
 
 body {
 	background: url(../img/call-robot.png) no-repeat center center fixed;
@@ -7,10 +6,10 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-	font-family: 'Lato', sans-serif; 
+	font-family: 'Droid Sans', sans-serif; 
 }
 
-form {font-family: sans-serif;}
+
 
 h1 {font-family: inherit;}
 
@@ -22,13 +21,13 @@ h1 {font-family: inherit;}
    top:0px;
    height:220px;
    width:30%;
-   background: rgba(0, 0, 0, 0.8);
+   /*background: rgba(0, 0, 0, 0.8);*/
    padding-top: 5px;
    padding-left: 13px;
 }
 
-.login .brand {font-size: 1.8em; color: #f5f5f5;}
-.login .slogan {color:#f5f5f5;}
+.login .brand {font-size: 1.8em; color: red;}
+.login .slogan {color:red;}
 
 .login-form { 
 	width: 83%; 
