@@ -2,7 +2,11 @@
 
 
 body {
-	background: url(../img/smile.jpg) no-repeat center center fixed;
+	background: url(../img/call-robot.png) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 	font-family: 'Lato', sans-serif; 
 }
 
