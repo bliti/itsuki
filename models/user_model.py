@@ -1,10 +1,11 @@
 class User(object):
     
     
-    def __init__(self, name, phone, employer):
+    def __init__(self, name, phone, email, organization):
         self.name = name
         self.phone = phone
-        self.employer = employer
+        self.email = email
+        self.organization = organization
         self.status = 'new'
         
         
