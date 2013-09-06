@@ -1,9 +1,12 @@
 class Call(object):
     
     
-    def __init__(self, emiter, receiver):
+    def __init__(self, emiter, receiver, script):
         self.emiter = emiter
         self.receiver = receiver
+        self.script = script
+        self.dial_datetime = None
+        self.result = None
         
         
     def dial_datetime(self, datetime):
