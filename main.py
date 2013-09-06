@@ -1,10 +1,45 @@
-from flask import Flask, render_template
+# -*- coding: utf-8 -*-
+
+from flask import Flask, render_template, g
+from sqlite3 import dbapi2 as sqlite3
+from settings.dev import DEBUG, DATABASE
 
 
 app = Flask(__name__)
 
-#to ease development
-DEBUG = True
+
+def connect_db():
+    """ Connects to database. """
+    rv = sqlite3.connect(DATABASE)
+    rv.row_factory = sqlite3.Row
+    return rv
+
+
+def init_db():
+    """ Create database tables. """
+    with app.app_context():
+        db = get_db()
+        with app.open_resource('sql/schema.sql', mode='r') as f:
+            db.cursor().executescript(f.read())
+        db.commit()
+
+
+def get_db():
+    """
+       Gets a new database conn for the
+       current app context.
+    """
+    if not hasattr(g, 'sqlite_db'):
+        g.sqlite_db = connect_db()
+    return g.sqlite_db
+
+
+@app.teardown_appcontext
+def close_db(error):
+    """ Close db again at end of request. """
+    if hasattr(g, 'sqlite_db'):
+        g.sqlite_db.close()
+
 
 @app.route("/", methods=['GET'])
 def index():
@@ -12,4 +47,5 @@ def index():
 
 
 if __name__ == "__main__":
+    init_db()
     app.run(debug=DEBUG)
