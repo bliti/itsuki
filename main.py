@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 def connect_db():
     """ Connects to database. """
-    rv = sqlite3.connect(DATABASE)
+    rv = sqlite3.connect(DATABASE, detect_types=sqlite3.PARSE_DECLTYPES)
     rv.row_factory = sqlite3.Row
     return rv
 
