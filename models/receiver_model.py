@@ -16,6 +16,7 @@ class Receiver(object):
         self.phone = phone
         self.receiver_type = receiver_type  #associate, insured, etc.
         self.last_call = None
+        self.next_call = None
         self.status = 'suspended'
         
     
