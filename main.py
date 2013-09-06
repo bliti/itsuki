@@ -41,6 +41,11 @@ def query_db(query, args=(), one=False):
     return (rv[0] if rv else None) if one else rv
 
 
+@app.before_request
+def before_request():
+    g.db = connect_db()
+    
+
 @app.teardown_appcontext
 def close_db(error):
     """ Close db again at end of request. """
