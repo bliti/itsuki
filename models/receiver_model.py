@@ -18,6 +18,7 @@ class Receiver(object):
         self.last_call = None
         self.status = 'suspended'
         
+    
     def next_call(self, next_call_datetime):
         """ Date/time when next call is to be done. """
         self.next_call = next_call_datetime
