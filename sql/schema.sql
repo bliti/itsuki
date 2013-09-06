@@ -17,8 +17,8 @@ create table if not exists receivers (
     phone varchar(255) not null,
     receiver_type varchar(255) not null,
     status varchar(255) not null,
-	last_call timestamp,
-	next_call timestamp,
+    last_call timestamp,
+    next_call timestamp,
     user_id integer not null,
     foreign key(user_id) references users(id)
 );
@@ -39,6 +39,6 @@ create table if not exists calls (
 create table if not exists scripts (
     id integer primary key autoincrement,
     user_id integer not null,
-	script text not null,
+    script text not null,
     foreign key(user_id) references users(id)
 );
