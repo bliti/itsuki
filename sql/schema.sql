@@ -1,5 +1,7 @@
 /* sqlite3 */
 
+/* schema not yet normalized */
+
 create table if not exists users (
   id integer primary key autoincrement,
   name varchar(255) not null,
