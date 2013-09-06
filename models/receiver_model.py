@@ -14,7 +14,7 @@ class Receiver(object):
         self.user = user           #user receiver belongs to.foreign key in DB.
         self.name = name
         self.phone = phone
-        self.type = receiver_type  #associate, insured, etc.
+        self.receiver_type = receiver_type  #associate, insured, etc.
         self.last_call = None
         self.status = 'suspended'
         
