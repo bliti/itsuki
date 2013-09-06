@@ -7,7 +7,6 @@
 ###
 
 
-
 class Receiver(object):
     
     
@@ -30,7 +29,9 @@ class Receiver(object):
     
     def status(self, status):
         """
-        Receiver status Active/Suspended. Default is inactive.
+        Receiver status Active/Suspended. 
+        Default is suspended, because we do not
+        add to calling queue automatically.
         i.e. if active call, if not don't.
         """
         return self.status
