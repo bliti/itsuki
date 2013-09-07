@@ -26,7 +26,7 @@ def init_db():
 
 def get_db():
     """
-       Gets a new database conn for the
+       Gets a new database conn for
        current app context.
     """
     if not hasattr(g, 'sqlite_db'):
@@ -34,15 +34,21 @@ def get_db():
     return g.sqlite_db
 
 
-def query_db(query, args=(), one=False):
+def query_db(query, args=(), fetch_one=False):
+    """
+        Query DB. 
+        To fetch one record include param
+        fetch_one = True
+    """
     cur = g.db.execute(query, args)
     rv = [dict((cur.description[idx][0], value)
                for idx, value in enumerate(row)) for row in cur.fetchall()]
-    return (rv[0] if rv else None) if one else rv
+    return (rv[0] if rv else None) if fetch_one else rv
 
 
 @app.before_request
 def before_request():
+    """Get db conn before request"""
     g.db = connect_db()
     
 
@@ -56,6 +62,11 @@ def close_db(error):
 @app.route("/", methods=['GET'])
 def index():
     return render_template('index.html', css='index', title='Welcome')
+    
+    
+@app.route("/dashboard", methods=['GET'])
+def dashboard():
+    return render_template('dashboard.html', css='dashboard', title='Dashboard')
 
 
 if __name__ == "__main__":
