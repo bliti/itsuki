@@ -66,7 +66,7 @@ def index():
     
 @app.route("/dashboard", methods=['GET'])
 def dashboard():
-    return render_template('dashboard.html', css='dashboard', title='Dashboard', name='Roberto')
+    return render_template('dashboard.html', css='dashboard', title='Dashboard')
 
 
 if __name__ == "__main__":
