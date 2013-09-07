@@ -67,6 +67,11 @@ def index():
 @app.route("/dashboard", methods=['GET'])
 def dashboard():
     return render_template('dashboard.html', css='dashboard', title='Dashboard')
+    
+
+@app.route("/new/client", methods=['GET'])
+def new_client():
+    return render_template('new_client.html', css='main', title='Add New Client')
 
 
 if __name__ == "__main__":

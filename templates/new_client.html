@@ -1,3 +1,5 @@
+<!-- new client -->
+
 {% extends "layout.html" %}
 {% block title %}{{title}}{% endblock %}
 {% block css %}<link rel="stylesheet" href="static/css/{{css}}.css">{% endblock %}
@@ -5,6 +7,7 @@
 {% block body %}
 
 
+{% include "forms/new-client-form.html" %}
 
 
 {% endblock %}

@@ -1,0 +1,47 @@
+<!-- add new client form -->
+
+
+<form class="form-horizontal" role="form">
+  
+  <div class="form-group">
+    <label for="name" class="col-lg-2 control-label">Name</label>
+    <div class="col-lg-3">
+      <input type="text" class="form-control" id="name" placeholder="Client Name" required>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="phone" class="col-lg-2 control-label">Phone</label>
+    <div class="col-lg-3">
+      <input type="text" class="form-control" id="phone" placeholder="Numbers only, please." required>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="inputEmail1" class="col-lg-2 control-label">Type</label>
+    <div class="col-lg-3">
+      <select class="form-control" id="client_type">
+		  
+		  <!-- 
+			  load these values dynamically depending on User.
+		      these here are just for development purposes.
+		   -->
+		  
+		  
+		  <option>Associate</option>
+		  <option>Insured</option>
+	  <select>
+    </div>
+  </div>
+  
+
+  
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <button type="submit" class="btn btn-default">Save</button>
+    </div>
+  </div>
+</form>
+
+
+
