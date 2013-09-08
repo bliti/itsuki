@@ -71,7 +71,7 @@ def dashboard():
 
 @app.route("/new/client", methods=['GET'])
 def new_client():
-    return render_template('new_client.html', css='main', title='Add New Client')
+    return render_template('new_client.html', title='Add New Client')
 
 
 if __name__ == "__main__":

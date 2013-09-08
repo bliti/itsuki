@@ -2,12 +2,16 @@
 
 {% extends "layout.html" %}
 {% block title %}{{title}}{% endblock %}
-{% block css %}<link rel="stylesheet" href="static/css/{{css}}.css">{% endblock %}
+{% block css %}<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css')}}">{% endblock %}
 
 {% block body %}
 
-
-{% include "forms/new-client-form.html" %}
-
+<div class="new_client">
+		
+		<div class="container">
+			{% include "forms/new-client-form.html" %}
+		</div>
+		
+</div>
 
 {% endblock %}
