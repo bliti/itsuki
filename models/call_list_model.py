@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+
+
 ###
 # self.receivers is a list of the unique ids columns of the receivers.
 # Not names, because names may be repeated.

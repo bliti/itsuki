@@ -1,0 +1,17 @@
+<!-- new script -->
+
+{% extends "layout.html" %}
+{% block title %}{{title}}{% endblock %}
+{% block css %}<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css')}}">{% endblock %}
+
+{% block body %}
+
+<div class="new_script">
+		
+		<div class="container">
+			{% include "forms/new-script-form.html" %}
+		</div>
+		
+</div>
+
+{% endblock %}

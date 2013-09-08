@@ -72,6 +72,16 @@ def dashboard():
 @app.route("/new/client", methods=['GET'])
 def new_client():
     return render_template('new_client.html', title='Add New Client')
+    
+    
+@app.route("/new/list", methods=['GET'])
+def new_list():
+    return render_template('new_list.html', title='Create New Call List')
+    
+    
+@app.route("/new/script", methods=['GET'])
+def new_script():
+    return render_template('new_script.html', title='Create New Call Script')
 
 
 if __name__ == "__main__":

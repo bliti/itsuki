@@ -1,0 +1,52 @@
+<!-- add new client form -->
+
+
+<form class="form-horizontal" role="form">
+  
+  <div class="form-group">
+    <label for="list-name" class="col-lg-2 control-label">List Name</label>
+    <div class="col-lg-3">
+      <input type="text" class="form-control" id="list-name" placeholder="Example: Yearly Call" required>
+    </div>
+  </div>
+
+  
+  
+  {# Iterate over the receivers data with this block of HTML. Not done yet. (: #}
+  <div class="form-group">
+     <div class="col-lg-offset-2 col-lg-10">
+       <div class="checkbox">
+         <label>
+           <input type="checkbox"> Client Name
+         </label>
+       </div>
+     </div>
+   </div>
+   {# end of html to be iterated with  #}
+
+
+   {# Iterate over the scripts data with this block of HTML. Not done yet. (: #}
+   <div class="form-group">
+      <div class="col-lg-offset-2 col-lg-10">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox"> Script Name
+          </label>
+		  <p>Put an accordion here with the script inside.</p>
+        </div>
+      </div>
+    </div>
+    {# end of html to be iterated with  #}
+
+
+
+  
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <button type="submit" class="btn btn-default">Save</button>
+    </div>
+  </div>
+</form>
+
+
+
