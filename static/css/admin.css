@@ -1,0 +1,20 @@
+/* admin.css */
+
+
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans);
+
+body {
+   	font-family: 'Droid Sans', sans-serif;
+}
+
+
+
+h1 {font-family: inherit;}
+
+
+
+.login {padding-top: 10px; color: #222;}
+
+.brand {font-size: 1.8em; color: #c73c27;}
+
+.fry {padding-top: 25px;}

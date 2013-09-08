@@ -1,12 +1,16 @@
 # -*- coding: utf-8 -*-
 
-from flask import Flask, render_template, g
+from flask import Flask, render_template, g, request, url_for, redirect,\
+                  session, abort
 from sqlite3 import dbapi2 as sqlite3
-from settings.dev import DEBUG, DATABASE
+from settings.dev import DEBUG, DATABASE, SECRET_KEY, USERNAME, PASSWORD
 
 
 app = Flask(__name__)
+app.secret_key = SECRET_KEY
 
+
+#DATABASE CODE
 
 def connect_db():
     """ Connects to database. """
@@ -57,17 +61,63 @@ def close_db(error):
     """ Close db again at end of request. """
     if hasattr(g, 'sqlite_db'):
         g.sqlite_db.close()
+        
+        
+#END OF DATABASE CODE        
+        
+        
+#ROUTES/HANDLERS
+
+##Admin
+@app.route("/admin", methods=['GET'])
+def admin_index():
+    if session:
+        if session['logged_in']:
+            if session['admin']:
+                return redirect(url_for('admin_dashboard'))
+    else:
+        return render_template('admin_index.html', title='Admin Index/Login')
+
+@app.route("/admin/login", methods=['POST'])
+def admin_login():
+    if request.form['username'] == USERNAME:
+        if request.form['password'] == PASSWORD:
+            session['logged_in'] = True
+            session['admin'] = True
+            return redirect(url_for('admin_dashboard'))
+    else: 
+        return redirect(url_for('admin_index'))
+        
+        
+@app.route('/admin/logout')
+def admin_logout():
+    session.pop('logged_in', None)
+    session.pop('admin', None)
+    return redirect(url_for('admin_index'))
+        
 
 
-@app.route("/", methods=['GET'])
-def index():
-    return render_template('index.html', css='index', title='Welcome')
+@app.route("/admin/dashboard", methods=['GET'])
+def admin_dashboard():
+    if not session.get('logged_in'):
+            abort(401)
+    if not session.get('admin'):
+            abort(401)
+    return render_template('admin_dashboard.html')
     
     
 @app.route("/dashboard", methods=['GET'])
 def dashboard():
     return render_template('dashboard.html', css='dashboard', title='Dashboard')
-    
+   
+##END OF ADMIN 
+
+
+
+@app.route("/", methods=['GET'])
+def index():
+    return render_template('index.html', css='index', title='Welcome')
+     
 
 @app.route("/new/client", methods=['GET'])
 def new_client():

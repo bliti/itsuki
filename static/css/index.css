@@ -15,21 +15,9 @@ h1 {font-family: inherit;}
 
 
 
-.login {
-   position:fixed;
-   left:0px;
-   top:0px;
-   height:220px;
-   width:30%;
-   /*background: rgba(0, 0, 0, 0.8);*/
-   padding-top: 5px;
-   padding-left: 13px;
-}
+.login {padding-top: 20px; color: #222;}
 
-.login .brand {font-size: 1.8em; color: red;}
-.login .slogan {color:red;}
+.brand {font-size: 1.8em; color: #c73c27;}
+.slogan {color: #c73c27;}
 
-.login-form { 
-	width: 83%; 
-	padding-left: 7px; 
-}
+

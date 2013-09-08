@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}{{title}}{% endblock %}
+{% block css %}<link rel="stylesheet" href="static/css/admin.css">{% endblock %}
+
+{% block body %}
+
+	
+		
+		
+		<div class="login">
+			<div class="container">
+			
+			<ul class="list-inline">
+				<li><p class="brand">Admin Login</p></li>
+				
+			</ul>
+	  
+	           {% include "forms/admin-login-form.html"%}		
+			
+			
+	   </div>
+	</div>
+	
+	<div class="text-center fry">
+		<img src="{{ url_for('static', filename='img/admin-bg.jpg') }}">
+
+	</div>
+
+{% endblock %}

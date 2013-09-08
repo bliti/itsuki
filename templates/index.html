@@ -9,28 +9,17 @@
 		
 		
 		<div class="login">
+			<div class="container">
 			
 			<ul class="list-inline">
 				<li><p class="brand">Call Robot</p></li>
 				<li><p class="slogan">Automated Telephony Systems</p></li>
 			</ul>
+	  
+	           {% include "forms/login-form.html"%}		
 			
-			<div class="login-form">
-			<form class="" role="form">
-			  <div class="form-group">
-			    <label class="sr-only" for="exampleInputEmail2">Username</label>
-			    <input type="email" class="form-control" id="email" placeholder="Account Username">
-			  </div>
-			  <div class="form-group">
-			    <label class="sr-only" for="exampleInputPassword2">Password</label>
-			    <input type="password" class="form-control" id="password" placeholder="Account Password">
-			  </div>
-		 
-			  <button type="submit" class="btn btn-default">Login</button>
-			</form>
-		
-		</div>
-		
-		</div>
+			
+	   </div>
+	</div>
 
 {% endblock %}
