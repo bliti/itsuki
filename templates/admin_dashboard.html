@@ -1,14 +1,15 @@
 {% extends "layout.html" %}
 
-{% block css %}<link rel="stylesheet" href="static/css/admin.css">{% endblock %}
+{% block css %}<link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">{% endblock %}
 
 {% block body %}
 <p><a href="{{ url_for('admin_logout') }}">Logout, Mr. Admin.</a></p>
 
-<div class="create-user">
-	<br><br><br>
+<div class="container">
+	<div class="create-user">
+		<div class="row col-lg-12"><h4>Create new user:</h4></div>
 	{% include "forms/admin-create-user-form.html" %}
 	
+	</div>
 </div>
-
 {% endblock %}
