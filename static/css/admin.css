@@ -38,7 +38,9 @@ h1 {font-family: inherit;}
 
 		/* admin create user */
 
-.create-user {padding-top: 100px;}
+.user-created {padding-top: 10px;}
+
+.create-user {padding-top: 10px;}
 
 
 		/* users list */

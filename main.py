@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from flask import Flask, render_template, g, request, url_for, redirect,\
-                  session, abort
+                  session, abort, flash
 from sqlite3 import dbapi2 as sqlite3
 from settings.dev import DEBUG, DATABASE, SECRET_KEY, USERNAME, PASSWORD
 from models.user_model import User
@@ -126,8 +126,9 @@ def admin_create_user():
                            user.role])
     g.sqlite_db.commit()
     #flash the message tat user was created
-    #redirect to dashboard main.                       
-    return 'user created successfully.'
+    #redirect to dashboard main.               
+    flash('User created.')        
+    return redirect(url_for('admin_dashboard'))
    
     
     
