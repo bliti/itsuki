@@ -4,6 +4,8 @@ from flask import Flask, render_template, g, request, url_for, redirect,\
                   session, abort
 from sqlite3 import dbapi2 as sqlite3
 from settings.dev import DEBUG, DATABASE, SECRET_KEY, USERNAME, PASSWORD
+from models.user_model import User
+from utils.db import CREATE_USER
 
 
 app = Flask(__name__)
@@ -78,6 +80,7 @@ def admin_index():
     else:
         return render_template('admin_index.html', title='Admin Index/Login')
 
+
 @app.route("/admin/login", methods=['POST'])
 def admin_login():
     if request.form['username'] == USERNAME:
@@ -96,7 +99,6 @@ def admin_logout():
     return redirect(url_for('admin_index'))
         
 
-
 @app.route("/admin/dashboard", methods=['GET'])
 def admin_dashboard():
     if not session.get('logged_in'):
@@ -105,14 +107,42 @@ def admin_dashboard():
             abort(401)
     return render_template('admin_dashboard.html')
     
+
+@app.route('/admin/user/create', methods=['POST'])
+def admin_create_user():
+    if not session.get('logged_in'):
+            abort(401)
+    if not session.get('admin'):
+            abort(401)
     
+    user = User(request.form['name'],
+                request.form['phone'],
+                request.form['email'],
+                request.form['organization']
+                )
+                
+                
+    query_db(CREATE_USER, [user.name, 
+                           user.phone, 
+                           user.email, 
+                           user.organization, 
+                           user.status, 
+                           user.role])
+    
+    #flash the message tat user was created
+    #redirect to dashboard main.                       
+    return 'user created successfully.'
+   
+    
+    
+    
+##END OF ADMIN 
+
+
 @app.route("/dashboard", methods=['GET'])
 def dashboard():
     return render_template('dashboard.html', css='dashboard', title='Dashboard')
    
-##END OF ADMIN 
-
-
 
 @app.route("/", methods=['GET'])
 def index():

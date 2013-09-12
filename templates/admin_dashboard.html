@@ -1,3 +1,8 @@
 admin dashboard
 
 <p><a href="{{ url_for('admin_logout') }}">Logout, Mr. Admin.</a></p>
+
+<div class="create-user">
+	{% include "forms/admin-create-user-form.html" %}
+	
+</div>
