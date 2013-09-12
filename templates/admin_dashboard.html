@@ -4,26 +4,8 @@
 
 {% block body %}
 {% include "admin-nav.html" %}
+{% include "message_flashing.html" %}
 
-{% with messages = get_flashed_messages() %}
-  {% if messages %}
-    
-    {% for message in messages %}
-	<br><br>
-<div class="user-created">
-	<div class="container">
-		<div class="row col-lg-12">
-			<div class="alert alert-success alert-dismissable">
-			  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-			  <strong>{{message}}</strong>
-			</div>
-		</div>
-	</div>
-</div>
-	{% endfor %}
-    
-  {% endif %}
-{% endwith %}
 
 
 <div class="container">
