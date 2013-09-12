@@ -3,13 +3,51 @@
 {% block css %}<link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">{% endblock %}
 
 {% block body %}
-<p><a href="{{ url_for('admin_logout') }}">Logout, Mr. Admin.</a></p>
+{% include "admin-nav.html" %}
+
 
 <div class="container">
 	<div class="create-user">
 		<div class="row col-lg-12"><h4>Create new user:</h4></div>
 	{% include "forms/admin-create-user-form.html" %}
+    </div>
+</div>
+
+
+<div class="users-list">
+	<div class="container">
+		
+		<div class="row col-lg-12">
+			<h4>Users in system:</div>
+		</div>
+		
+		{# iterate with this markup and results from db #}
+		
+		
+	{% if users %}
+		{% for user in users %}
+		
+		<div class="row col-lg-12 list">
+			<div class="col-lg-2"><strong>name:</strong> {{user.name}}</div>
+			<div class="col-lg-2"><strong>phone:</strong> {{user.phone}}</div>
+			<div class="col-lg-2"><strong>email:</strong> {{user.email}}</div>
+			<div class="col-lg-2"><strong>org:</strong> {{user.organization}}</div>
+			<div class="col-lg-2"><strong>role:</strong> {{user.role}}</div>
+			<div class="col-lg-2"><strong>status:</strong> {{user.status}}</div>
+		</div>
+		
+		{% endfor %}
+		
+		{% else %}
+		
+		<h4>There are no users in the database. Check for technical issues.</h4>
+		
 	
+	{% endif %}
+        {# end of markup to be iterated with #}
+				
+		
 	</div>
 </div>
+
 {% endblock %}

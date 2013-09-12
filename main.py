@@ -5,7 +5,7 @@ from flask import Flask, render_template, g, request, url_for, redirect,\
 from sqlite3 import dbapi2 as sqlite3
 from settings.dev import DEBUG, DATABASE, SECRET_KEY, USERNAME, PASSWORD
 from models.user_model import User
-from utils.db import CREATE_USER
+from utils.db import CREATE_USER, SELECT_ALL_USERS
 
 
 app = Flask(__name__)
@@ -40,22 +40,18 @@ def get_db():
     return g.sqlite_db
 
 
-def query_db(query, args=(), fetch_one=False):
-    """
-        Query DB. 
-        To fetch one record include param
-        fetch_one = True
-    """
-    cur = g.db.execute(query, args)
-    rv = [dict((cur.description[idx][0], value)
-               for idx, value in enumerate(row)) for row in cur.fetchall()]
-    return (rv[0] if rv else None) if fetch_one else rv
+def query_db(query, args=(), one=False):
+    cur = get_db().execute(query, args)
+    rv = cur.fetchall()
+    cur.close()
+    return (rv[0] if rv else None) if one else rv
+
 
 
 @app.before_request
 def before_request():
     """Get db conn before request"""
-    g.db = connect_db()
+    g.sqlite_db = connect_db()
     
 
 @app.teardown_appcontext
@@ -105,7 +101,7 @@ def admin_dashboard():
             abort(401)
     if not session.get('admin'):
             abort(401)
-    return render_template('admin_dashboard.html')
+    return render_template('admin_dashboard.html', users=query_db(SELECT_ALL_USERS))
     
 
 @app.route('/admin/user/create', methods=['POST'])
@@ -128,7 +124,7 @@ def admin_create_user():
                            user.organization, 
                            user.status, 
                            user.role])
-    
+    g.sqlite_db.commit()
     #flash the message tat user was created
     #redirect to dashboard main.                       
     return 'user created successfully.'

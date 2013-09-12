@@ -9,5 +9,5 @@ CREATE_USER = ("INSERT INTO users"
               "VALUES(?,?,?,?,?,?)")
               
 
-SELECT_ALL_USERS = ("SELECT  id, name, phone, email, oranization, status, role "
+SELECT_ALL_USERS = ("SELECT  id, name, phone, email, organization, status, role "
                     "FROM users")
